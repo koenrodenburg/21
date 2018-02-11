@@ -3,8 +3,6 @@ package model;
 import model.cards.Deck;
 import model.cards.Hand;
 
-import java.util.function.Function;
-
 /**
  * Class representing the game
  */
@@ -23,7 +21,7 @@ public class Game {
     private final Deck deck;
     private final Hand bank;
     private final Hand player;
-    private Status status;
+    private GameStatus gameStatus;
 
     private Game() {
         // Initialize the deck and hands
@@ -39,7 +37,7 @@ public class Game {
 
         // The player gets a second card and starts his turn
         player.giveCard(deck.deal());
-        status = Status.PLAYERS_TURN;
+        gameStatus = GameStatus.PLAYERS_TURN;
     }
 
     public Hand getBank() {
@@ -50,8 +48,8 @@ public class Game {
         return player;
     }
 
-    public Status getStatus() {
-        return status;
+    public GameStatus getGameStatus() {
+        return gameStatus;
     }
 
     public Game hit() {
@@ -59,7 +57,7 @@ public class Game {
     }
 
     public Game stand() {
-        return update(() -> status = Status.BANKS_TURN);
+        return update(() -> gameStatus = GameStatus.BANKS_TURN);
     }
 
     private Game update(Runnable action) {
@@ -70,16 +68,16 @@ public class Game {
     }
 
     private void assertActiveGame() {
-        if(status != Status.PLAYERS_TURN) {
+        if(gameStatus != GameStatus.PLAYERS_TURN) {
             throw new UnsupportedOperationException("This action is not allowed because it is not the player's turn.");
         }
     }
 
     private void afterUpdate() {
-        if(status == Status.PLAYERS_TURN && player.getValue() > MAXIMUM_POINTS) {
+        if(gameStatus == GameStatus.PLAYERS_TURN && player.getValue() > MAXIMUM_POINTS) {
             // If the player's hand exceeds the maximum number of points, he loses and the bank wins
-            status = Status.BANK_WINS;
-        } else if(status == Status.BANKS_TURN) {
+            gameStatus = GameStatus.BANK_WINS;
+        } else if(gameStatus == GameStatus.BANKS_TURN) {
             playBank();
             setOutcome();
         }
@@ -93,31 +91,9 @@ public class Game {
 
     private void setOutcome() {
         if(bank.getValue() > MAXIMUM_POINTS || bank.getValue() < player.getValue()) {
-            status = Status.PLAYER_WINS;
+            gameStatus = GameStatus.PLAYER_WINS;
         } else {
-            status = Status.BANK_WINS;
+            gameStatus = GameStatus.BANK_WINS;
         }
-    }
-
-    public enum Action {
-        HIT(Game::hit),
-        STAND(Game::stand);
-
-        private final Function<Game, Game> action;
-
-        Action(Function<Game, Game> action) {
-            this.action = action;
-        }
-
-        public Game execute(Game game) {
-            return action.apply(game);
-        }
-    }
-
-    public enum Status {
-        PLAYERS_TURN,
-        BANKS_TURN,
-        PLAYER_WINS,
-        BANK_WINS
     }
 }

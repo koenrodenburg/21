@@ -11,7 +11,7 @@ public class GameBean {
     private final HandBean bank;
 
     public GameBean(Game game) {
-        status = game.getStatus().toString();
+        status = game.getGameStatus().toString();
         player = new HandBean(game.getPlayer());
         bank = new HandBean(game.getBank());
     }
