@@ -17,10 +17,18 @@ public class Card {
         this.rank = rank;
     }
 
+    /**
+     * Get the Suit of the Card
+     * @return Suit
+     */
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * Get the Rank of the Card
+     * @return Rank
+     */
     public Rank getRank() {
         return rank;
     }

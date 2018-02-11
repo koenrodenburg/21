@@ -1,7 +1,5 @@
 package model.cards;
 
-import model.cards.Card.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -22,12 +20,17 @@ public class Deck {
         }
     }
 
+    /**
+     * Get the cards of this deck
+     * TODO return an UnmodifiableList representation so an external class cannot change the cards in the deck
+     * @return ArrayList The cards in this deck
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }
 
     /**
-     * Shuffles the deck by randomly removing a card and inserting it at the end
+     * Shuffle the deck
      */
     public Deck shuffle() {
         Collections.shuffle(cards);

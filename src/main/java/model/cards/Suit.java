@@ -11,10 +11,18 @@ public enum Suit {
 
     private final String name;
 
+    /**
+     * Constructor
+     * @param name String Name of the Suit
+     */
     Suit(String name) {
         this.name = name;
     }
 
+    /**
+     * ToString implementation
+     * @return String
+     */
     @Override
     public String toString() {
         return name;

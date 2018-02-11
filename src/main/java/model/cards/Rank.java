@@ -21,15 +21,28 @@ public enum Rank {
     private final String name;
     private final int value;
 
+    /**
+     * Constructor
+     * @param name String Name of the Rank
+     * @param value int Value of the Rank
+     */
     Rank(String name, int value) {
         this.name = name;
         this.value = value;
     }
 
+    /**
+     * Get the value of this Rank
+     * @return int Value of this Rank
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * ToString implementation
+     * @return String
+     */
     @Override
     public String toString() {
         return name;

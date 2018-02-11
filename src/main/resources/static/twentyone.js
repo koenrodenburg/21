@@ -2,7 +2,7 @@
 
 // Initialize a new game
 function newGame() {
-    // Perform the initial GET to the /game endpoint to retrieve the initial cards
+    // Perform the initial GET to the /game/ endpoint to retrieve the initial cards
     $.get( "/game/", function( data ) {
         $('.new-game').removeClass('hidden');
         $('.active-game').removeClass('hidden');
@@ -12,6 +12,7 @@ function newGame() {
 }
 
 function action(name) {
+    // Send the player's actions as POST requests to the /game/ endpoint
     $.post( "/game/", { action: name } )
         .done(function(data) {
             processPlayerData(data);
