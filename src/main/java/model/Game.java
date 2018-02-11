@@ -71,16 +71,12 @@ public class Game {
     }
 
     private Game update(Runnable action) {
-        assertActiveGame();
-        action.run();
-        afterUpdate();
-        return this;
-    }
-
-    private void assertActiveGame() {
         if(gameStatus != GameStatus.PLAYERS_TURN) {
             throw new UnsupportedOperationException("This action is not allowed because it is not the player's turn.");
         }
+        action.run();
+        afterUpdate();
+        return this;
     }
 
     private void afterUpdate() {
