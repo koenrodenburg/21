@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Twenty-One</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Twenty-One</h1>
+
+            <div class="active-game">
+                <p><span class="new-game hidden">A new game has started! </span>It is your turn.</p>
+
+                <button class="btn btn-primary" onclick="action('HIT');">Hit</button>
+                <button class="btn btn-primary" onclick="action('STAND');">Stand</button>
+            </div>
+            <div class="completed-game hidden">
+                <p>The game is over. <span class="result"></span></p>
+
+                <button class="btn btn-primary" onclick="newGame();">New game</button>
+
+                <p><b>The bank's cards:</b> <span class="bank-cards"></span></p>
+                <p><b>Total value:</b> <span class="bank-value"></span></p>
+            </div>
+
+            <p><b>Your cards:</b> <span class="player-cards"></span></p>
+            <p><b>Total value:</b> <span class="player-value"></span></p>
+        </div>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="twentyone.js"></script>
+    </body>
+</html>

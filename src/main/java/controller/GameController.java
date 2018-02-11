@@ -14,7 +14,7 @@ public class GameController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public GameBean getGameState() {
-        return new GameBean(Game.getCurrentGame());
+        return new GameBean(Game.newGame());
     }
 
     @RequestMapping(path = "/", method = RequestMethod.POST)

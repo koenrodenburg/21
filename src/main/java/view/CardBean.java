@@ -8,10 +8,12 @@ import model.cards.Card;
 public class CardBean {
     private final String suit;
     private final String rank;
+    private final String string;
 
     public CardBean(Card card) {
         suit = card.getSuit().toString();
         rank = card.getRank().toString();
+        string = card.toString();
     }
 
     public String getSuit() {
@@ -20,5 +22,9 @@ public class CardBean {
 
     public String getRank() {
         return rank;
+    }
+
+    public String getString() {
+        return string;
     }
 }
