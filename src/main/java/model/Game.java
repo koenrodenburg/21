@@ -10,18 +10,28 @@ public class Game {
     private static final int MAXIMUM_POINTS = 21;
     private static final int BANK_MINIMUM_POINTS = 17;
 
-    /**
-     * Singleton pattern for Game, with static getInstance and private constructor
-     */
-    private static final Game INSTANCE = new Game();
-    public static Game getInstance() {
-        return INSTANCE;
-    }
+    private static Game CURRENT_GAME;
 
     private final Deck deck;
     private final Hand bank;
     private final Hand player;
     private GameStatus gameStatus;
+
+    public static Game getCurrentGame() {
+        if(CURRENT_GAME==null) {
+            return newGame();
+        }
+        return CURRENT_GAME;
+    }
+
+    /**
+     * Start a new game
+     * @return Game New game
+     */
+    public static Game newGame() {
+        CURRENT_GAME = new Game();
+        return getCurrentGame();
+    }
 
     private Game() {
         // Initialize the deck and hands

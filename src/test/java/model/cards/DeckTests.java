@@ -3,7 +3,6 @@ package model.cards;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Test class for Deck
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Deck.class)
 public class DeckTests {
     private Deck deck;
 

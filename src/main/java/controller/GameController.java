@@ -14,12 +14,12 @@ public class GameController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public GameBean getGameState() {
-        return new GameBean(Game.getInstance());
+        return new GameBean(Game.getCurrentGame());
     }
 
     @RequestMapping(path = "/", method = RequestMethod.POST)
     public GameBean updateGame(@RequestParam("action") Action action) {
-        Game game = Game.getInstance();
+        Game game = Game.getCurrentGame();
         action.execute(game);
         return new GameBean(game);
     }
