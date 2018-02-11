@@ -1,8 +1,9 @@
-package models;
+package model.cards;
 
-import models.Card.*;
+import model.cards.Card.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Class representing a deck of playing cards
@@ -21,16 +22,15 @@ public class Deck {
         }
     }
 
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
     /**
      * Shuffles the deck by randomly removing a card and inserting it at the end
      */
-    Deck shuffle() {
-        int size = cards.size();
-        for(int i = 0; i < 200; i++) {
-            int randomIndex = (int) (Math.random() * size);
-            Card shuffleCard = cards.remove(randomIndex);
-            cards.add(shuffleCard);
-        }
+    public Deck shuffle() {
+        Collections.shuffle(cards);
         return this;
     }
 
@@ -38,12 +38,11 @@ public class Deck {
      * Gets and removes the next card from the deck
      * @return Card the next card from the deck
      */
-    public Card getNextCard() {
-        if(hasRemainingCards()) {
-            return cards.remove(0);
-        } else {
-            return null;
+    public Card deal() {
+        if(!hasRemainingCards()) {
+            throw new UnsupportedOperationException("There are no cards left in the deck");
         }
+        return cards.remove(0);
     }
 
     /**

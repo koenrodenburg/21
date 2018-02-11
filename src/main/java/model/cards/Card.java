@@ -1,9 +1,9 @@
-package models;
+package model.cards;
 
 /**
  * Class representing a playing card
  */
-class Card {
+public class Card {
     private Suit suit;
     private Rank rank;
 
@@ -15,6 +15,14 @@ class Card {
     Card(Suit suit, Rank rank) {
         this.suit = suit;
         this.rank = rank;
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public Rank getRank() {
+        return rank;
     }
 
     /**
@@ -64,7 +72,7 @@ class Card {
     /**
      * Enumeration of suits as used in playing cards
      */
-    enum Suit {
+    public enum Suit {
         HEARTS("Hearts"),
         SPADES("Spades"),
         DIAMONDS("Diamonds"),
@@ -85,7 +93,7 @@ class Card {
     /**
      * Enumeration of ranks as used in playing cards
      */
-    enum Rank {
+    public enum Rank {
         ACE("Ace", 1),
         TWO("Two", 2),
         THREE("Three", 3),

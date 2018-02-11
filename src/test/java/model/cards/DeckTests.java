@@ -1,4 +1,4 @@
-package models;
+package model.cards;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Test c;ass for Deck
+ * Test class for Deck
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Deck.class)
@@ -34,11 +34,11 @@ public class DeckTests {
 
     @Test
     public void dealCards() {
-        Card card = deck.getNextCard();
+        Card card = deck.deal();
         assertThat(card).isNotNull();
         assertThat(deck.getNumberOfRemainingCards()).isEqualTo(51);
-        deck.getNextCard();
-        deck.getNextCard();
+        deck.deal();
+        deck.deal();
         assertThat(deck.getNumberOfRemainingCards()).isEqualTo(49);
     }
 }
