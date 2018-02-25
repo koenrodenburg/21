@@ -29,8 +29,7 @@ for that is to expose only the necessary information to the client, and keep the
 
 ## TO DO
 
-Most of the required functionalities are implemented, but due to the time constraints, several TO DO's are still open. Throughout the code, TODO comments indicate
-places where improvements can and should be made. Additionally, the following points are still open:
+Several TO DO's are still open. Throughout the code, TODO comments indicate places where improvements can and should be made. Additionally, the following points are still open:
 
 * Ace can count for 1 or 11 points
 * Betting
